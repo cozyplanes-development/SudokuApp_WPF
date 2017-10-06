@@ -17,7 +17,8 @@ Sudoku made with WPF in C#. (final-year project)
 
 ### License
 ```
-Sudoku Game in WPF made with C#
+    Sudoku Game in WPF made with C#
+    
     Copyright (C) 2017 cozyplanes
 
     This program is free software: you can redistribute it and/or modify
