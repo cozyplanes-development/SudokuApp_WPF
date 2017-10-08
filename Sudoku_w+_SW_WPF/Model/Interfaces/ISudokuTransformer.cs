@@ -14,7 +14,7 @@ namespace Cozyplanes.SudokuApp.Model.Interfaces
         void ShuffleSudoku(byte[][] sudokuBoard);
 
 		/// <summary>
-		/// 유효한 스도쿠에서 난이도에 알맞게 셀을 삭제하여 플레이어가 해결할 수 있도록 합니다.
+		/// 유효한 스도쿠에서 난이도에 알맞게 셀을 제거하여 플레이어가 해결할 수 있도록 합니다.
 		/// </summary>
 		/// <param name="sudokuBoard">9x9 가변 배열</param>
 		/// <param name="difficultyType">난이도에 알맞게 셀을 삭제</param>

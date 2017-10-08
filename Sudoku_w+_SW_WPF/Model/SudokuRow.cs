@@ -8,6 +8,10 @@ namespace Cozyplanes.SudokuApp.Model
 
 		public SudokuRow() { }
 
+		/// <summary>
+		/// 스도쿠 셀의 인스턴스 생성
+		/// </summary>
+		/// <param name="sudokuRow">스도쿠 보드의 행</param>
 		public SudokuRow(SudokuRow sudokuRow)
 		{
 			if (sudokuRow != null)

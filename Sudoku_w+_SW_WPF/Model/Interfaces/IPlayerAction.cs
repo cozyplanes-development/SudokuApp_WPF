@@ -3,7 +3,7 @@
 namespace Cozyplanes.SudokuApp.Model.Interfaces
 {
 	/// <summary>
-	/// 이 인터페이스의 모든 구현은 PlayerDecisionType 속성을 가지고 있습니다.
+	/// 이 인터페이스의 모든 구현은 PlayerActionType 속성을 가지고 있습니다.
 	/// </summary>
 	public interface IPlayerAction
     {

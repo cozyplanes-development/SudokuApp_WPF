@@ -6,12 +6,10 @@ namespace Cozyplanes.SudokuApp.Model
 	{
 		private byte? value;
 
-		public SudokuCell(byte? value, bool isReadOnly)
-		{
-			Value = value;
-			IsReadOnly = isReadOnly;
-		}
-
+		/// <summary>
+		/// 스도쿠의 현재 상태
+		/// </summary>
+		/// <param name="sudokuCell">스도쿠의 셀</param>
 		public SudokuCell(SudokuCell sudokuCell)
 		{
 			if (sudokuCell != null)
@@ -19,6 +17,12 @@ namespace Cozyplanes.SudokuApp.Model
 				Value = sudokuCell.Value;
 				IsReadOnly = sudokuCell.IsReadOnly;
 			}
+		}
+
+		public SudokuCell(byte? value, bool isReadOnly)
+		{
+			Value = value;
+			IsReadOnly = isReadOnly;
 		}
 
 		public byte? Value

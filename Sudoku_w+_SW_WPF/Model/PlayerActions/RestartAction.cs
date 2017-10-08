@@ -9,7 +9,7 @@ namespace Cozyplanes.SudokuApp.Model.PlayerActions
 		/// <summary>
 		/// 스도쿠를 재시작하는 액션입니다. (= 초기화)
 		/// </summary>
-		/// <param name="sudokuGrid">스도쿠 보드</param>
+		/// <param name="sudokuGrid">스도쿠 보드 (Grid)</param>
 		public RestartAction(SudokuRow[] sudokuGrid) : base(sudokuGrid) { }
 
 		public PlayerActionType PlayerActionType

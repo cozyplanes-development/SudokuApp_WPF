@@ -33,7 +33,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 		}
 
 		/// <summary>
-		/// 스도쿠 보드 (Grid)를 한 곳(sudokuGridFrom)에서 다른 곳 (sudokuGridTo)로 복사합니다.
+		/// 스도쿠 보드 (Grid)를 한 곳 (sudokuGridFrom)에서 다른 곳 (sudokuGridTo)로 복사합니다.
 		/// </summary>
 		/// <param name="sudokuGridFrom">스도쿠 보드 (Grid) 복사의 시작점</param>
 		/// <param name="sudokuGridTo">스도쿠 보드 (Grid) 복사의 끝점</param>

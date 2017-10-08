@@ -7,19 +7,19 @@ namespace Cozyplanes.SudokuApp.Model.PlayerActions
 	/// </summary>
 	public abstract class ChangeSudokuGridCompletelyAction
 	{
-    private SudokuRow[] sudokuGridBeforeAction;
+		private SudokuRow[] sudokuGridBeforeAction;
 
-    public ChangeSudokuGridCompletelyAction(SudokuRow[] sudokuGrid)
-    {
-        this.SudokuGridBeforeAction = sudokuGrid;
-    }
+		public ChangeSudokuGridCompletelyAction(SudokuRow[] sudokuGrid)
+		{
+			SudokuGridBeforeAction = sudokuGrid;
+		}
 
-    public SudokuRow[] SudokuGridBeforeAction
-    {
-        get
-        {
-            return this.sudokuGridBeforeAction;
-        }
+		public SudokuRow[] SudokuGridBeforeAction
+		{
+			get
+			{
+				return sudokuGridBeforeAction;
+			}
 
         private set
         {
@@ -28,7 +28,7 @@ namespace Cozyplanes.SudokuApp.Model.PlayerActions
                 throw new ArgumentException("SudokuGrid must have nine elements!");
             }
 
-            this.sudokuGridBeforeAction = value;
+            sudokuGridBeforeAction = value;
         }
     }
 }

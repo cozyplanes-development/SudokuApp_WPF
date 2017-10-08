@@ -73,7 +73,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 		}
 
 		/// <summary>
-		/// 백트래킹 알고리즘을 사용하여 스도쿠를 해결합니다.
+		/// 백트래킹 알고리즘 (Backtracking Algorithm)을 사용하여 스도쿠를 해결합니다.
 		/// </summary>
 		/// <param name="sudokuBoard">9*9 가변 배열</param>
 		/// <returns>스도쿠가 해결이 가능한지를 반환합니다.</returns>
@@ -109,7 +109,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 				{
 					if (sudokuBoard[row][i] == cellValue || // sudokuBoard[행][i] 가 cellValue와 같다
 						sudokuBoard[i][column] == cellValue || // sudokuBoard[i][열] 이 cellValue와 같다
-						sudokuBoard[row / 3 * 3 + i / 3][column / 3 * 3 + i % 3] == cellValue) // 축약: sudokuBoard[행 / 3 * 3 + i / 3][열 / 3 * 3 + i % 3] 이 cellValue와 같다
+						sudokuBoard[row / 3 * 3 + i / 3][column / 3 * 3 + i % 3] == cellValue) // sudokuBoard[행 / 3 * 3 + i / 3][열 / 3 * 3 + i % 3] 이 cellValue와 같다
 						// 위 3개의 조건을 모두 만족한다면...
 					{
 						// 셀이 기본 규칙을 따르고 있지 않다!

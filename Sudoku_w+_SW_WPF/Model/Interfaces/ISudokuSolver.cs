@@ -16,7 +16,7 @@
 		bool IsNewCellValid(byte[][] sudokuBoard, byte row, byte column, byte value);
 
 		/// <summary>
-		/// 스도쿠 규칙에 알맞게 스도쿠를 해결합니다.
+		/// 스도쿠 기본 규칙을 준수하여 스도쿠를 해결합니다.
 		/// </summary>
 		/// <param name="sudokuBoard">9x9 가변 배열</param>
 		/// <returns>스도쿠를 풀 수 있는지를 반환합니다.</returns>

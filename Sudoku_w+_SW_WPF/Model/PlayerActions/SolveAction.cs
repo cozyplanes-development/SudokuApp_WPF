@@ -8,7 +8,7 @@ namespace Cozyplanes.SudokuApp.Model.PlayerActions
 		/// <summary>
 		/// 스도쿠를 해결하는 액션입니다.
 		/// </summary>
-		/// <param name="sudokuGrid">스도쿠 보드</param>
+		/// <param name="sudokuGrid">스도쿠 보드 (Grid)</param>
 		public SolveAction(SudokuRow[] sudokuGrid) : base(sudokuGrid) { }
 
 		public PlayerActionType PlayerActionType

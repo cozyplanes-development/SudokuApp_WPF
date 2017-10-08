@@ -9,10 +9,10 @@ namespace Cozyplanes.SudokuApp.ViewModel
 	/// </summary>
 	public class SudokuTransformer : ISudokuTransformer
 	{
-		// 빈칸의 개수를 여기서 바꿀 수 있습니다
-		// 다음 수는 보편적인 스도쿠의 난이도에서 빈칸의 평균값입니다. 
+		// 빈칸의 개수를 여기서 수정할 수 있습니다
+		// 다음 수는 보편적인 스도쿠의 난이도에서 빈칸의 평균 값입니다. 
 		// 따라서 알고리즘과 전혀 관계가 없음을 알립니다.
-		private const int CellsToEraseOnEasyDifficulty = 10; // 기본 30 // Easy
+		private const int CellsToEraseOnEasyDifficulty = 30; // Easy
 		private const int CellsToEraseOnMediumDifficulty = 40; // Medium
 		private const int CellsToEraseOnHardDifficulty = 45; // Hard
 		private const int CellsToEraseOnImpossibleDifficulty = 55; // Impossible
@@ -62,11 +62,9 @@ namespace Cozyplanes.SudokuApp.ViewModel
 			}
 
 			// 셀 지우는 방법:
-			// 1. 행에서 아무 셀을 고른 다음 지운다.
-			// 2. 반대편에 있는 셀을 지운다.
+			// 1. 행에서 시스템의 Random() 함수로 선택된 셀을 지운다.
+			// 2. 반 대각선 (Minor Diagonal) 에 있는 셀을 지운다.
 			// 3. 반복한다.
-			// the "algorithm" here is that we take a random cell from each row, erase it 
-			// and then erase the cell opposite to it by the minor diagonal
 			while (cellsToErase > 0)
 			{
 				// 0 부터 8 까지의 행, 1씩 증가
@@ -197,7 +195,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 
 				case SudokuBoardTransformationType.AroundMainDiagonalGroup: // 주 대각선 주변 그룹
 					
-					// 주대각선 위에 있는 각각의 셀을 반대편에 있는 셀과 교체
+					// 주 대각선 (Major Diagonal) 위에 있는 각각의 셀을 반대편에 있는 셀과 교체
 					for (int row = 0; row < 9; row++)
 					{
 						byte tempValue = 0;
@@ -212,7 +210,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 
 				case SudokuBoardTransformationType.AroundMinorDiagonalGroup: // 반 대각선 주변 그룹
 
-					// 반 대각선 위에 있는 각각의 셀을 반대편에 있는 셀과 교체
+					// 반 대각선 (Minor Diagonal) 위에 있는 각각의 셀을 반대편에 있는 셀과 교체
 					for (int row = 0; row < 9; row++)
 					{
 						byte tempValue = 0;
