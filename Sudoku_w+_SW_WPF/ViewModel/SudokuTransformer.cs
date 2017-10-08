@@ -12,7 +12,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 		// 빈칸의 개수를 여기서 수정할 수 있습니다
 		// 다음 수는 보편적인 스도쿠의 난이도에서 빈칸의 평균 값입니다. 
 		// 따라서 알고리즘과 전혀 관계가 없음을 알립니다.
-		private const int CellsToEraseOnEasyDifficulty = 30; // Easy
+		private const int CellsToEraseOnEasyDifficulty = 10; // Easy
 		private const int CellsToEraseOnMediumDifficulty = 40; // Medium
 		private const int CellsToEraseOnHardDifficulty = 45; // Hard
 		private const int CellsToEraseOnImpossibleDifficulty = 55; // Impossible

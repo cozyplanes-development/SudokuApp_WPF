@@ -11,13 +11,14 @@ namespace Cozyplanes.SudokuApp
 {
     public partial class MainWindow : Window
 	{ 
-		private const string UnsolvableSudokuMessage = "The current sudoku is unsolvable! Try restarting or erasing some cells.";
-		private const string PlayerSolvedSudokuMessage = "Congratulations, you solved it in {0} seconds! Try on harder difficulty  : )";
-		private const string UnvalidSudokuCellAddedMessage = "The sudoku must be in a valid state to proceed.";
+		private const string UnsolvableSudokuMessage = "현재 상태의 스도쿠는 해결할 수 없습니다! 재시작하거나 몇몇 셀을 지워보세요.";
+		private const string PlayerSolvedSudokuMessage = "축하드립니다! {0} 초 만에 해결하셨군요! 또다른 게임을 플레이해 보거나 더 어려운 난이도를 플레이 해 보세요! : )";
+		private const string UnvalidSudokuCellAddedMessage = "스도쿠는 유효한 상태 (답안이 있는 상태) 이어야만 진행하실 수 있습니다. 재시작하거나 몇몇 셀을 지워보세요.";
 
 		private DispatcherTimer dispatcherTimer;
 		private TimeSpan timerTimespan;
 
+		/////////////////////////////////// 초기 설정 ///////////////////////////////////
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -31,7 +32,9 @@ namespace Cozyplanes.SudokuApp
 			this.SudokuGrid.UnvalidCellValueAdded += new EventHandler(this.IsUnvalidCellValueAdded);
 			this.SudokuGrid.UnvalidCellValueRemoved += new EventHandler(this.IsUnvalidCellValueRemoved);
 		}
+		/////////////////////////////////// 초기 설정 ///////////////////////////////////
 
+		/////////////////////////////////// 난이도 ///////////////////////////////////
 		public SudokuDifficultyType SelectedSudokuDifficulty
 		{
 			get
@@ -44,7 +47,10 @@ namespace Cozyplanes.SudokuApp
 				this.SudokuGrid.SudokuDifficulty = value;
 			}
 		}
+		/////////////////////////////////// 난이도 ///////////////////////////////////
 
+
+		/////////////////////////////////// UI 핸들링 ///////////////////////////////////
 		private void Button_Quit_Click(object sender, RoutedEventArgs e)
 		{
 			this.Close();
@@ -152,13 +158,13 @@ namespace Cozyplanes.SudokuApp
 		private void OnSudokuSolved(object sender, EventArgs e)
 		{
 			this.dispatcherTimer.Stop();
-			this.textBlock_Message.Foreground = Brushes.Green;
+			this.textBlock_Message.Foreground = Brushes.Green; // 게임 완료시 메세지 색깔
 			this.textBlock_Message.Text = string.Format(PlayerSolvedSudokuMessage, this.timerTimespan.TotalSeconds);
 		}
 
 		private void IsUnvalidCellValueAdded(object sender, EventArgs e)
 		{
-			this.textBlock_Message.Foreground = Brushes.Red;
+			this.textBlock_Message.Foreground = Brushes.Red; // 오류시 셀의 테두리 색깔
 			this.textBlock_Message.Text = UnvalidSudokuCellAddedMessage;
 
 			this.Button_Undo.IsEnabled = false;
@@ -169,7 +175,7 @@ namespace Cozyplanes.SudokuApp
 
 		private void IsUnvalidCellValueRemoved(object sender, EventArgs e)
 		{
-			this.textBlock_Message.Foreground = Brushes.Black;
+			this.textBlock_Message.Foreground = Brushes.Black; // 기본 테두리 색깔
 			this.textBlock_Message.Text = "";
 
 			this.Button_Undo.IsEnabled = true;
@@ -190,7 +196,7 @@ namespace Cozyplanes.SudokuApp
 
 		private void ShowUnsolvableSudokuMessage()
 		{
-			this.textBlock_Message.Foreground = Brushes.Red;
+			this.textBlock_Message.Foreground = Brushes.Red; // 오류시 메세지 색깔
 			this.textBlock_Message.Text = UnsolvableSudokuMessage;
 		}
 
@@ -200,5 +206,6 @@ namespace Cozyplanes.SudokuApp
 			this.dispatcherTimer.Start();
 			this.label_Timer.Content = this.timerTimespan.ToString("hh\\:mm\\:ss");
 		}
+		/////////////////////////////////// UI 핸들링 ///////////////////////////////////
 	}
 }

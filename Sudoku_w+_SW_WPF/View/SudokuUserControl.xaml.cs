@@ -16,6 +16,7 @@ namespace Cozyplanes.SudokuApp
 {
     public partial class SudokuUserControl
 	{
+		/////////////////////////////////// 초기 설정 ///////////////////////////////////
 		public event EventHandler SudokuSolved;
 		public event EventHandler UnvalidCellValueAdded;
 		public event EventHandler UnvalidCellValueRemoved;
@@ -48,7 +49,9 @@ namespace Cozyplanes.SudokuApp
 		public int InitiallyFilledSudokuCellsCount { get; private set; }
 
 		public bool IsUnvalidCellValueAdded { get; private set; }
+		/////////////////////////////////// 초기 설정 ///////////////////////////////////
 
+		/////////////////////////////////// 난이도 ///////////////////////////////////
 		public SudokuDifficultyType SudokuDifficulty
 		{
 			get
@@ -61,7 +64,9 @@ namespace Cozyplanes.SudokuApp
 				this.sudokuDifficulty = value;
 			}
 		}
+		/////////////////////////////////// 난이도 ///////////////////////////////////
 
+		
 		/// <summary>
 		/// Returns the current progress of the sudoku based on the player filled cells.
 		/// </summary>
