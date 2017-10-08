@@ -13,7 +13,8 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>F:\Gifted\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,10 +24,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -49,7 +51,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CE6A0C5FC628A740D061C1AED2D4C5196F194628</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Cozyplanes.SudokuApp_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -72,14 +83,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Enums\PlayerActionType.cs" />
-    <Compile Include="Enums\SudokuBoardTransformationType.cs" />
-    <Compile Include="Enums\SudokuDifficultyType.cs" />
-    <Compile Include="SudokuGenerator.cs" />
-    <Compile Include="Interfaces\IPlayerAction.cs" />
-    <Compile Include="Interfaces\ISudokuGenerator.cs" />
-    <Compile Include="Interfaces\ISudokuSolver.cs" />
-    <Compile Include="Interfaces\ISudokuTransformer.cs" />
+    <Compile Include="Model\Enums\PlayerActionType.cs" />
+    <Compile Include="Model\Enums\SudokuBoardTransformationType.cs" />
+    <Compile Include="Model\Enums\SudokuDifficultyType.cs" />
+    <Compile Include="ViewModel\SudokuGenerator.cs" />
+    <Compile Include="Model\Interfaces\IPlayerAction.cs" />
+    <Compile Include="Model\Interfaces\ISudokuGenerator.cs" />
+    <Compile Include="Model\Interfaces\ISudokuSolver.cs" />
+    <Compile Include="Model\Interfaces\ISudokuTransformer.cs" />
     <Compile Include="Model\PlayerActions\ChangeSudokuGridCompletelyAction.cs" />
     <Compile Include="Model\PlayerActions\FillCellAction.cs" />
     <Compile Include="Model\PlayerActions\HintAction.cs" />
@@ -87,13 +98,13 @@
     <Compile Include="Model\PlayerActions\SolveAction.cs" />
     <Compile Include="Model\SudokuCell.cs" />
     <Compile Include="Model\SudokuRow.cs" />
-    <Compile Include="SudokuSolver.cs" />
-    <Compile Include="SudokuTransformer.cs" />
-    <Compile Include="SudokuUserControl.xaml.cs">
+    <Compile Include="ViewModel\SudokuSolver.cs" />
+    <Compile Include="ViewModel\SudokuTransformer.cs" />
+    <Compile Include="View\SudokuUserControl.xaml.cs">
       <DependentUpon>SudokuUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SudokuUtils.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="ViewModel\SudokuUtils.cs" />
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -101,11 +112,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SudokuUserControl.xaml">
+    <Page Include="View\SudokuUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,6 +139,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Cozyplanes.SudokuApp_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -150,11 +162,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\Images\btn-redo.ico" />
+    <Resource Include="Assets\Images\btn-redo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\btn-restart.ico" />
-    <Resource Include="Resources\Images\btn-undo.ico" />
+    <Resource Include="Assets\Images\btn-restart.ico" />
+    <Resource Include="Assets\Images\btn-undo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

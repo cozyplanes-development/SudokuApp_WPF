@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:enums="clr-namespace:Cozyplanes.SudokuApp.Enums"
-        xmlns:app="clr-namespace:Cozyplanes.SudokuApp;assembly=Cozyplanes.SudokuApp"
-        xmlns:local="clr-namespace:Cozyplanes.SudokuApp"
+        xmlns:enums="clr-namespace:Cozyplanes.SudokuApp.Model.Enums"
+        xmlns:usercontrol="clr-namespace:Cozyplanes.SudokuApp"
         mc:Ignorable="d"
         Title="$ sudo { ku }" Height="548.874" Width="642.343">
+    
+    <!-- UI 요소가 담기는 부모 Grid입니다.-->
     <Grid>
         <Grid.Resources>
             <ObjectDataProvider x:Key="SudokuDifficultyEnumValues" MethodName="GetValues" ObjectType="{x:Type enums:SudokuDifficultyType}">
@@ -15,13 +16,17 @@
                     <x:Type TypeName="enums:SudokuDifficultyType"/>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-            <Image x:Key="UndoImage" Source="pack://application:,,,/Resources/Images/btn-undo.ico" Stretch="Fill"/>
-            <Image x:Key="RedoImage" Source="pack://application:,,,/Resources/Images/btn-redo.ico" Stretch="Fill"/>
-            <Image x:Key="RestartImage" Source="pack://application:,,,/Resources/Images/btn-restart.ico" Stretch="Fill"/>
+            
+            <!-- 오른쪽 상단 버튼의 이미지-->
+            <Image x:Key="UndoImage" Source="pack://application:,,,/Assets/Images/btn-undo.ico" Stretch="Fill"/>
+            <Image x:Key="RedoImage" Source="pack://application:,,,/Assets/Images/btn-redo.ico" Stretch="Fill"/>
+            <Image x:Key="RestartImage" Source="pack://application:,,,/Assets/Images/btn-restart.ico" Stretch="Fill"/>
         </Grid.Resources>
-
-        <local:SudokuUserControl x:Name="SudokuGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="454" Height="451"
+        
+        <!-- 플레이어가 게임을 하는 부분, View/SudokuUserControl.xaml 호출-->
+        <usercontrol:SudokuUserControl x:Name="SudokuGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="454" Height="451"
                                   Loaded="SudokuGrid_Loaded" KeyUp="SudokuGrid_KeyUp" MouseLeftButtonUp="SudokuGrid_MouseLeftButtonUp"/>
+        <!-- 스도쿠 보드 그리기-->
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="149" Margin="9,10,0,0" VerticalAlignment="Top" Width="152"/>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="149" Margin="311,10,0,0" VerticalAlignment="Top" Width="152"/>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="149" Margin="160,10,0,0" VerticalAlignment="Top" Width="152"/>
@@ -32,8 +37,10 @@
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="151" Margin="311,310,0,0" VerticalAlignment="Top" Width="152"/>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="151" Margin="160,310,0,0" VerticalAlignment="Top" Width="152"/>
 
+        <!-- 현재 진행 상태를 나타내는 프로그래스 바 (가로)-->
         <ProgressBar Name="ProgressBar_SudokuStatus" HorizontalAlignment="Left" Height="28" Margin="10,472,0,0" VerticalAlignment="Top" Width="453" Minimum="0" Maximum="100"/>
 
+        <!-- 각종 UI 버튼-->
         <Button x:Name="Button_Undo" Content="{StaticResource UndoImage}" HorizontalAlignment="Left" Margin="484,10,0,0" VerticalAlignment="Top" Width="35" Height="35" Click="Button_Undo_Click"/>
         <Button x:Name="Button_Redo" Content="{StaticResource RedoImage}" HorizontalAlignment="Left" Margin="531,10,0,0" VerticalAlignment="Top" Width="35" Height="35" Click="Button_Redo_Click"/>
         <Button x:Name="Button_Restart" Content="{StaticResource RestartImage}" HorizontalAlignment="Left" Margin="575,10,0,0" VerticalAlignment="Top" Width="35" Height="35" Click="Button_Restart_Click"/>
@@ -41,12 +48,18 @@
         <Button x:Name="Button_Solve" Content="Solve" HorizontalAlignment="Left" Margin="484,115,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_Solve_Click"/>
         <Button x:Name="Button_Quit" Content="Quit" HorizontalAlignment="Left" Margin="484,421,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_Quit_Click"/>
         <Button x:Name="Button_GenerateNew" Content="Generate New" HorizontalAlignment="Left" Margin="484,366,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_GenerateNew_Click"/>
+        
+        <!-- 난이도를 선택할 수 있는 콤보 박스, Enums 에서 Value 바인딩-->
         <ComboBox x:Name="ComboBox_SudokuDifficulty" 
                   ItemsSource="{Binding Source={StaticResource SudokuDifficultyEnumValues}}" 
                   SelectedItem="{Binding Path=DataContext.SelectedSudokuDifficulty}" 
                   SelectionChanged="ComboBox_SudokuDifficulty_SelectionChanged"
                   HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Margin="484,311,0,0" VerticalAlignment="Top" Width="126" FontSize="18"/>
+        
+        <!-- 게임 종료후 나타나는 메세지 창-->
         <TextBlock x:Name="textBlock_Message" HorizontalAlignment="Left" Margin="484,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="132" Width="126" FontSize="16"/>
+        
+        <!-- 스탑워치-->
         <Label x:Name="label_Timer" Content="" HorizontalAlignment="Left" Margin="484,466,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="34" Width="126" FontSize="18"/>
     </Grid>
 </Window>

@@ -8,16 +8,16 @@ namespace Cozyplanes.SudokuApp.Model
 
 		public SudokuCell(byte? value, bool isReadOnly)
 		{
-			this.Value = value;
-			this.IsReadOnly = isReadOnly;
+			Value = value;
+			IsReadOnly = isReadOnly;
 		}
 
 		public SudokuCell(SudokuCell sudokuCell)
 		{
 			if (sudokuCell != null)
 			{
-				this.Value = sudokuCell.Value;
-				this.IsReadOnly = sudokuCell.IsReadOnly;
+				Value = sudokuCell.Value;
+				IsReadOnly = sudokuCell.IsReadOnly;
 			}
 		}
 
@@ -25,7 +25,7 @@ namespace Cozyplanes.SudokuApp.Model
 		{
 			get
 			{
-				return this.value;
+				return value;
 			}
 			set
 			{

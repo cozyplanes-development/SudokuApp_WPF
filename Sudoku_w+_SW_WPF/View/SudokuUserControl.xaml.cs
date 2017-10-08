@@ -6,10 +6,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-using Cozyplanes.SudokuApp.Interfaces;
-using Cozyplanes.SudokuApp.Enums;
+using Cozyplanes.SudokuApp.Model.Interfaces;
+using Cozyplanes.SudokuApp.Model.Enums;
 using Cozyplanes.SudokuApp.Model;
 using Cozyplanes.SudokuApp.Model.PlayerActions;
+using Cozyplanes.SudokuApp.ViewModel;
 
 namespace Cozyplanes.SudokuApp
 {

@@ -6,23 +6,21 @@ namespace Cozyplanes.SudokuApp.Model
 	{
 		private const string SudokuRowIndexOutOfRangeMessage = "The sudoku row has only nine elements indexed from zero.";
 
-		public SudokuRow()
-		{
-		}
+		public SudokuRow() { }
 
 		public SudokuRow(SudokuRow sudokuRow)
 		{
 			if (sudokuRow != null)
 			{
-				this.Cell1 = new SudokuCell(sudokuRow.Cell1);
-				this.Cell2 = new SudokuCell(sudokuRow.Cell2);
-				this.Cell3 = new SudokuCell(sudokuRow.Cell3);
-				this.Cell4 = new SudokuCell(sudokuRow.Cell4);
-				this.Cell5 = new SudokuCell(sudokuRow.Cell5);
-				this.Cell6 = new SudokuCell(sudokuRow.Cell6);
-				this.Cell7 = new SudokuCell(sudokuRow.Cell7);
-				this.Cell8 = new SudokuCell(sudokuRow.Cell8);
-				this.Cell9 = new SudokuCell(sudokuRow.Cell9);
+				Cell1 = new SudokuCell(sudokuRow.Cell1);
+				Cell2 = new SudokuCell(sudokuRow.Cell2);
+				Cell3 = new SudokuCell(sudokuRow.Cell3);
+				Cell4 = new SudokuCell(sudokuRow.Cell4);
+				Cell5 = new SudokuCell(sudokuRow.Cell5);
+				Cell6 = new SudokuCell(sudokuRow.Cell6);
+				Cell7 = new SudokuCell(sudokuRow.Cell7);
+				Cell8 = new SudokuCell(sudokuRow.Cell8);
+				Cell9 = new SudokuCell(sudokuRow.Cell9);
 			}
 		}
 

@@ -2,10 +2,10 @@
 
 namespace Cozyplanes.SudokuApp.Model.PlayerActions
 {
-    /// <summary>
-    /// Represents a player decision where the whole sudoku grid changes.
-    /// </summary>
-    public abstract class ChangeSudokuGridCompletelyAction
+	/// <summary>
+	/// 전체 스도쿠 보드가 변경되는 플레이어의 액션을 나타냅니다.
+	/// </summary>
+	public abstract class ChangeSudokuGridCompletelyAction
 	{
     private SudokuRow[] sudokuGridBeforeAction;
 

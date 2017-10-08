@@ -1,7 +1,7 @@
 ﻿using System;
 
-using Cozyplanes.SudokuApp.Interfaces;
-using Cozyplanes.SudokuApp.Enums;
+using Cozyplanes.SudokuApp.Model.Interfaces;
+using Cozyplanes.SudokuApp.Model.Enums;
 
 namespace Cozyplanes.SudokuApp.Model.PlayerActions
 {
@@ -11,7 +11,13 @@ namespace Cozyplanes.SudokuApp.Model.PlayerActions
         private byte column;
         private byte value;
 
-        public FillCellAction(byte row, byte column, byte value)
+		/// <summary>
+		/// 셀을 채우는 액션입니다.
+		/// </summary>
+		/// <param name="row">스도쿠 보드의 행</param>
+		/// <param name="column">스도쿠 보드의 행</param>
+		/// <param name="value">셀의 값</param>
+		public FillCellAction(byte row, byte column, byte value)
         {
             this.Row = row;
             this.Column = column;

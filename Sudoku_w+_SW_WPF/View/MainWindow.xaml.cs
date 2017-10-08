@@ -5,7 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-using Cozyplanes.SudokuApp.Enums;
+using Cozyplanes.SudokuApp.Model.Enums;
 
 namespace Cozyplanes.SudokuApp
 {
@@ -28,8 +28,8 @@ namespace Cozyplanes.SudokuApp
 
 			this.SudokuGrid.GenerateAndPopulateSudoku();
 			this.SudokuGrid.SudokuSolved += new EventHandler(this.OnSudokuSolved);
-			this.SudokuGrid.UnvalidCellValueAdded += new EventHandler(this.OnUnvalidCellValueAdded);
-			this.SudokuGrid.UnvalidCellValueRemoved += new EventHandler(this.OnUnvalidCellValueRemoved);
+			this.SudokuGrid.UnvalidCellValueAdded += new EventHandler(this.IsUnvalidCellValueAdded);
+			this.SudokuGrid.UnvalidCellValueRemoved += new EventHandler(this.IsUnvalidCellValueRemoved);
 		}
 
 		public SudokuDifficultyType SelectedSudokuDifficulty
@@ -156,7 +156,7 @@ namespace Cozyplanes.SudokuApp
 			this.textBlock_Message.Text = string.Format(PlayerSolvedSudokuMessage, this.timerTimespan.TotalSeconds);
 		}
 
-		private void OnUnvalidCellValueAdded(object sender, EventArgs e)
+		private void IsUnvalidCellValueAdded(object sender, EventArgs e)
 		{
 			this.textBlock_Message.Foreground = Brushes.Red;
 			this.textBlock_Message.Text = UnvalidSudokuCellAddedMessage;
@@ -167,7 +167,7 @@ namespace Cozyplanes.SudokuApp
 			this.Button_Solve.IsEnabled = false;
 		}
 
-		private void OnUnvalidCellValueRemoved(object sender, EventArgs e)
+		private void IsUnvalidCellValueRemoved(object sender, EventArgs e)
 		{
 			this.textBlock_Message.Foreground = Brushes.Black;
 			this.textBlock_Message.Text = "";
