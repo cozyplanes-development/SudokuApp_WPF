@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -68,7 +68,7 @@ namespace Cozyplanes.SudokuApp
 
 		
 		/// <summary>
-		/// Returns the current progress of the sudoku based on the player filled cells.
+		/// 플레이어가 채운 셀을 기반으로 스도쿠의 현재 진행 상황을 반환합니다.
 		/// </summary>
 		public double GetProgress()
 		{
@@ -90,7 +90,7 @@ namespace Cozyplanes.SudokuApp
 		}
 
 		/// <summary>
-		/// Populates the SudokuGrid with a new sudoku.
+		/// 스도쿠 보드 (Grid)에 새로운 스도쿠를 채웁니다.
 		/// </summary>
 		public void GenerateAndPopulateSudoku()
 		{
@@ -107,7 +107,7 @@ namespace Cozyplanes.SudokuApp
 		}
 
 		/// <summary>
-		/// Populates the SudokuGrid with the last generated sudoku.
+		/// 스도쿠 보드 (Grid)에 마지막으로 생성된 스도쿠를 채웁니다.
 		/// </summary>
 		public void RestartSudoku()
 		{
@@ -123,9 +123,9 @@ namespace Cozyplanes.SudokuApp
 		}
 
 		/// <summary>
-		/// If the SudokuGrid is valid, fills the first empty cell of the SudokuGrid.
+		/// 스도쿠 보드 (Grid)가 유효하면 스도쿠 보드 (Grid)의 첫 번째 빈 셀을 채웁니다.
 		/// </summary>
-		/// <returns>Whether the sudoku is solvable.</returns>
+		/// <returns>스도쿠를 해결할 수 있는지를 반환합니다.</returns>
 		public bool GetHint()
 		{
 			if (this.IsUnvalidCellValueAdded)
@@ -133,9 +133,9 @@ namespace Cozyplanes.SudokuApp
 				return false;
 			}
 
-			// Finds the first empty SudokuCell and tries to solve the sudoku.
-			// If the sudoku is solvable, fills the cell with the value from the solved sudoku and returns true.
-			// If not, returns false.
+			// 첫 번째 빈 스도쿠 셀을 찾고 스도쿠를 해결합니다.
+// 스도쿠가 해결 될 수 있으면, 해결된 스도쿠의 값으로 셀을 채우고 true를 반환합니다. 
+// 그렇지 않은 경우 false를 반환합니다.
 			for (byte row = 0; row < 9; row++)
 			{
 				for (byte col = 0; col < 9; col++)
@@ -366,24 +366,4 @@ namespace Cozyplanes.SudokuApp
 			catch (InvalidOperationException)
 			{
 				// this is here to prevent the application from crashing 
-				// if the sudoku DataGrid is unvalid 
-				// or there is an operation being performed on the grid while refreshing items
-			}
-		}
-
-		private SudokuRow[] SolveSudoku(SudokuRow[] sudokuGrid)
-		{
-			var sudokuBoard = SudokuUtils.GenerateSudokuBoardFromGrid(sudokuGrid);
-			bool isSolvable = this.sudokuSolver.SolveSudoku(sudokuBoard);
-			if (isSolvable)
-			{
-				var solvedSudokuGrid = SudokuUtils.GenerateSudokuGridFromBoard(sudokuBoard);
-				return solvedSudokuGrid;
-			}
-			else
-			{
-				return null;
-			}
-		}
-	}
-}
+				// if the sudoku DataGrid is u
