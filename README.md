@@ -13,7 +13,7 @@ Sudoku made with WPF in C#. (final-year project)
 - (Bug) Exception in `View/SudokuUserControl.xaml.cs` - `RefreshSudokuItems()` (AP003)
 - (Bug) Not displaying `PlayerSolvedSudokuMessage` when redone after undone in finish. (before pressing the final enter) (AP004)
 - (Bug) Not checking whether the valid number has been written by the user. Only checks whether the current board is valid when `Hint?` button is pressed. (AP005)
-- (Feature) Score system, Add function around the code where `PlayerSolvedSudokuMessage` is displayed. (FR003)
+- (Feature) Score system, Add function around the code where `PlayerSolvedSudokuMessage` is displayed. (Save with .dat) (FR003)
 
 ### Contact
 <cozyplanes@tuta.io>
