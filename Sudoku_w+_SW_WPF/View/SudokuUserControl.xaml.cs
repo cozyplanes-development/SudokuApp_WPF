@@ -366,4 +366,24 @@ namespace Cozyplanes.SudokuApp
 			catch (InvalidOperationException)
 			{
 				// this is here to prevent the application from crashing 
-				// if the sudoku DataGrid is u
+				// if the sudoku DataGrid is unvalid 
+				// or there is an operation being performed on the grid while refreshing items
+			}
+		}
+
+		private SudokuRow[] SolveSudoku(SudokuRow[] sudokuGrid)
+		{
+			var sudokuBoard = SudokuUtils.GenerateSudokuBoardFromGrid(sudokuGrid);
+			bool isSolvable = this.sudokuSolver.SolveSudoku(sudokuBoard);
+			if (isSolvable)
+			{
+				var solvedSudokuGrid = SudokuUtils.GenerateSudokuGridFromBoard(sudokuBoard);
+				return solvedSudokuGrid;
+			}
+			else
+			{
+				return null;
+			}
+		}
+	}
+}
