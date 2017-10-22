@@ -1,3 +1,7 @@
+**IMPORTANT! DUE (TUESDAY M10 24 23:59 KST). MUST SEND PROJECT FILE VIA EMAIL**
+**MAKE NEW PROJECT + DELETE UNNECESSARY REFS**
+**INVESTIGATE INNO SETUP INSTALLER**
+
 ## SudokuApp_WPF_cozyplanes
 Sudoku made with WPF in C#. (final-year project)
 See README.md in publish_beta for installing and checking options.
