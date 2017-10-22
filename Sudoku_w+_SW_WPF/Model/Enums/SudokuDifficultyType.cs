@@ -5,9 +5,11 @@
 	/// </summary>
     public enum SudokuDifficultyType
     {
+		데모, // 명시하되, SudokuTransformer.cs에서 else 예외로 처리
+        Custom,
         Easy,
         Medium,
         Hard,
-        Impossible
+        Expert
     }
 }

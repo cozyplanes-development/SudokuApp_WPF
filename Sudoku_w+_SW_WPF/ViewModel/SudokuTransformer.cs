@@ -12,10 +12,11 @@ namespace Cozyplanes.SudokuApp.ViewModel
 		// 빈칸의 개수를 여기서 수정할 수 있습니다
 		// 다음 수는 보편적인 스도쿠의 난이도에서 빈칸의 평균 값입니다. 
 		// 따라서 알고리즘과 전혀 관계가 없음을 알립니다.
-		private const int CellsToEraseOnEasyDifficulty = 10; // Easy
-		private const int CellsToEraseOnMediumDifficulty = 40; // Medium
-		private const int CellsToEraseOnHardDifficulty = 45; // Hard
-		private const int CellsToEraseOnImpossibleDifficulty = 55; // Impossible
+		private const int CellsToEraseOnEasyDifficulty       = 30; // Easy
+		private const int CellsToEraseOnMediumDifficulty     = 40; // Medium
+		private const int CellsToEraseOnHardDifficulty       = 45; // Hard
+		private const int CellsToEraseOnImpossibleDifficulty = 55; // Expert
+        private const int CustomMode                         = 81; // Custom
 
 		private readonly Random random;
 		private const string InvalidSudokuBoardMessage = "스도쿠 보드는 반드시 9*9 가변 배열이여야만 합니다!";
@@ -37,7 +38,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 			}
 
 			// 지울 셀의 개수를 0으로 초기화
-			int cellsToErase = 0; 
+			int cellsToErase = 0;
 
 			// 지울 셀의 개수를 난이도에 따라 지정
 			if (sudokuDifficulty == SudokuDifficultyType.Easy)
@@ -52,13 +53,17 @@ namespace Cozyplanes.SudokuApp.ViewModel
 			{
 				cellsToErase = CellsToEraseOnHardDifficulty;
 			}
-			else if (sudokuDifficulty == SudokuDifficultyType.Impossible)
+			else if (sudokuDifficulty == SudokuDifficultyType.Expert)
 			{
 				cellsToErase = CellsToEraseOnImpossibleDifficulty;
 			}
+            else if (sudokuDifficulty == SudokuDifficultyType.Custom)
+            {
+                cellsToErase = CustomMode;
+            }
 			else
 			{
-				cellsToErase = 35; // 에러 발생시 Easy와 Medium 평균값의 중간값인 35개의 셀을 지움
+				cellsToErase = 10; // Demo 선택시 지정된 constant 가 없으므로 빈칸 10개 지정 / 오류 발생시에도 빈칸 10개
 			}
 
 			// 셀 지우는 방법:

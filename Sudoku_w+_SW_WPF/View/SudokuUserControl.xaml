@@ -18,8 +18,11 @@
           ColumnWidth="*"
           HorizontalContentAlignment="Center"
           VerticalContentAlignment="Center"
-          CanUserAddRows="False">
+          CanUserAddRows="False"
+	      BeginningEdit="DataGridSudoku_BeginningEdit"
+          CellEditEnding="DataGridSudoku_CellEditEnding">	
             <DataGrid.Columns>
+                <!-- 세로줄-->
                 <DataGridTextColumn Visibility="Visible" Binding="{Binding Path=Cell1.Value, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnExceptions=False, NotifyOnTargetUpdated=True}" />
                 <DataGridTextColumn Visibility="Visible" Binding="{Binding Path=Cell2.Value, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnExceptions=False, NotifyOnTargetUpdated=True}" />
                 <DataGridTextColumn Visibility="Visible" Binding="{Binding Path=Cell3.Value, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnExceptions=False, NotifyOnTargetUpdated=True}" />
@@ -30,20 +33,23 @@
                 <DataGridTextColumn Visibility="Visible" Binding="{Binding Path=Cell8.Value, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnExceptions=False, NotifyOnTargetUpdated=True}" />
                 <DataGridTextColumn Visibility="Visible" Binding="{Binding Path=Cell9.Value, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnExceptions=False, NotifyOnTargetUpdated=True}" />
             </DataGrid.Columns>
+            
             <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/> <!-- 선택된 행의 테두리 색깔 -->
             </DataGrid.Resources>
+            
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
-                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Background" Value="PeachPuff" /> <!-- 배경색-->
                     <Setter Property="Foreground" Value="Black" />
                     <Setter Property="FontSize" Value="24" />
+                    
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Path=IsReadOnly}" Value="True">
                             <Setter Property="FontWeight"  Value="ExtraBold"/>
                         </DataTrigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="AliceBlue"/>
+                            <Setter Property="Background" Value="SandyBrown"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>

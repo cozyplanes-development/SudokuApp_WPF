@@ -4,7 +4,7 @@ using Cozyplanes.SudokuApp.Model;
 namespace Cozyplanes.SudokuApp.ViewModel
 {
 	/// <summary>
-	/// 스도쿠와 관련된 다른 클래스를 도와주는 매소드의 모음 (Static 클래스)
+	/// 스도쿠와 관련된 다른 클래스를 도와주는 매소드의 모음입니다. (Static 클래스)
 	/// </summary>
 	public static class SudokuUtils
 	{

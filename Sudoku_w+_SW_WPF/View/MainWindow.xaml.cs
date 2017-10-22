@@ -10,202 +10,205 @@ using Cozyplanes.SudokuApp.Model.Enums;
 namespace Cozyplanes.SudokuApp
 {
     public partial class MainWindow : Window
-	{ 
-		private const string UnsolvableSudokuMessage = "현재 상태의 스도쿠는 해결할 수 없습니다! 재시작하거나 몇몇 셀을 지워보세요.";
+	{
+        private const string InvalidOperationMessage = "Error : Internal\n재시작 해주세요.";
+        private const string UnsolvableSudokuMessage = "현재 상태의 스도쿠는 해결할 수 없습니다! 재시작하거나 몇몇 셀을 지워보세요.";
 		private const string PlayerSolvedSudokuMessage = "축하드립니다! {0} 초 만에 해결하셨군요! 또다른 게임을 플레이해 보거나 더 어려운 난이도를 플레이 해 보세요! : )";
 		private const string UnvalidSudokuCellAddedMessage = "스도쿠는 유효한 상태 (답안이 있는 상태) 이어야만 진행하실 수 있습니다. 재시작하거나 몇몇 셀을 지워보세요.";
 
 		private DispatcherTimer dispatcherTimer;
 		private TimeSpan timerTimespan;
 
-		/////////////////////////////////// 초기 설정 ///////////////////////////////////
+		/// <summary>
+        /// 초기 설정
+        /// </summary>
 		public MainWindow()
 		{
 			InitializeComponent();
-			this.DataContext = this;
+			DataContext = this;
 
-			this.PrepareDispatcherTimer();
-			this.RestartTimer();
+			PrepareDispatcherTimer();
+			RestartTimer();
 
-			this.SudokuGrid.GenerateAndPopulateSudoku();
-			this.SudokuGrid.SudokuSolved += new EventHandler(this.OnSudokuSolved);
-			this.SudokuGrid.UnvalidCellValueAdded += new EventHandler(this.IsUnvalidCellValueAdded);
-			this.SudokuGrid.UnvalidCellValueRemoved += new EventHandler(this.IsUnvalidCellValueRemoved);
+			SudokuGrid.GenerateAndPopulateSudoku();
+			SudokuGrid.SudokuSolved += new EventHandler(OnSudokuSolved);
+			SudokuGrid.UnvalidCellValueAdded += new EventHandler(OnUnvalidCellValueAdded);
+			SudokuGrid.UnvalidCellValueRemoved += new EventHandler(OnUnvalidCellValueRemoved);
 		}
-		/////////////////////////////////// 초기 설정 ///////////////////////////////////
 
-		/////////////////////////////////// 난이도 ///////////////////////////////////
-		public SudokuDifficultyType SelectedSudokuDifficulty
+		/// <summary>
+        /// 스도쿠 난이도
+        /// </summary>
+        public SudokuDifficultyType SelectedSudokuDifficulty
 		{
 			get
 			{
-				return this.SudokuGrid.SudokuDifficulty;
+				return SudokuGrid.SudokuDifficulty;
 			}
 
 			set
 			{
-				this.SudokuGrid.SudokuDifficulty = value;
+				SudokuGrid.SudokuDifficulty = value;
 			}
 		}
-		/////////////////////////////////// 난이도 ///////////////////////////////////
 
 
-		/////////////////////////////////// UI 핸들링 ///////////////////////////////////
-		private void Button_Quit_Click(object sender, RoutedEventArgs e)
+        #region UI 핸들링
+        private void Button_Quit_Click(object sender, RoutedEventArgs e)
 		{
-			this.Close();
+			Close();
 		}
 
 		private void Button_GenerateNew_Click(object sender, RoutedEventArgs e)
 		{
-			this.SudokuGrid.GenerateAndPopulateSudoku();
+			SudokuGrid.GenerateAndPopulateSudoku();
 
-			this.RestartTimer();
-			this.UpdateProgressBar();
-			this.ClearMessage();
+			RestartTimer();
+			UpdateProgressBar();
+			ClearMessage();
 		}
 
 		private void Button_Restart_Click(object sender, RoutedEventArgs e)
 		{
-			this.SudokuGrid.RestartSudoku();
+			SudokuGrid.RestartSudoku();
 
-			this.UpdateProgressBar();
-			this.RestartTimer();
-			this.ClearMessage();
+			UpdateProgressBar();
+			RestartTimer();
+			ClearMessage();
 		}
 
 		private void Button_Hint_Click(object sender, RoutedEventArgs e)
 		{
-			bool existsHint = this.SudokuGrid.GetHint();
-			if (!existsHint && this.ProgressBar_SudokuStatus.Value != 100)
+			bool existsHint = SudokuGrid.GetHint();
+			if (!existsHint && ProgressBar_SudokuStatus.Value != 100)
 			{
-				this.ShowUnsolvableSudokuMessage();
+				ShowUnsolvableSudokuMessage();
 			}
-			else if (this.ProgressBar_SudokuStatus.Value != 100)
+			else if (ProgressBar_SudokuStatus.Value != 100)
 			{
-				this.ClearMessage();
+				ClearMessage();
 			}
 
-			this.UpdateProgressBar();
+			UpdateProgressBar();
 		}
 
 		private void Button_Solve_Click(object sender, RoutedEventArgs e)
 		{
-			bool isSolvable = this.SudokuGrid.SolveSudoku();
+			bool isSolvable = SudokuGrid.SolveSudoku();
 			if (!isSolvable)
 			{
-				this.ShowUnsolvableSudokuMessage();
+				ShowUnsolvableSudokuMessage();
 			}
 
-			this.UpdateProgressBar();
+			UpdateProgressBar();
 		}
 
 		private void Button_Undo_Click(object sender, RoutedEventArgs e)
 		{
-			if (this.SudokuGrid.UndoPlayerAction())
+			if (SudokuGrid.UndoPlayerAction())
 			{
-				this.UpdateProgressBar();
-				this.ClearMessage();
+				UpdateProgressBar();
+				ClearMessage();
 			}
 		}
 
 		private void Button_Redo_Click(object sender, RoutedEventArgs e)
 		{
-			if (this.SudokuGrid.RedoPlayerAction())
+			if (SudokuGrid.RedoPlayerAction())
 			{
-				this.UpdateProgressBar();
-				this.ClearMessage();
+				UpdateProgressBar();
+				ClearMessage();
 			}
 		}
 
 		private void SudokuGrid_KeyUp(object sender, KeyEventArgs e)
 		{
-			this.UpdateProgressBar();
+			UpdateProgressBar();
 		}
 
 		private void SudokuGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			this.UpdateProgressBar();
+			UpdateProgressBar();
 		}
 
 		private void SudokuGrid_Loaded(object sender, RoutedEventArgs e)
 		{
-			this.UpdateProgressBar();
+			UpdateProgressBar();
 		}
 
 		private void ComboBox_SudokuDifficulty_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			this.SudokuGrid.GenerateAndPopulateSudoku();
+			SudokuGrid.GenerateAndPopulateSudoku();
 
-			this.RestartTimer();
-			this.UpdateProgressBar();
-			this.ClearMessage();
+			RestartTimer();
+			UpdateProgressBar();
+			ClearMessage();
 		}
 
 		private void PrepareDispatcherTimer()
 		{
-			this.dispatcherTimer = new DispatcherTimer();
-			this.dispatcherTimer.Tick += new EventHandler(DispatcherTimer_Tick);
-			this.dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+			dispatcherTimer = new DispatcherTimer();
+			dispatcherTimer.Tick += new EventHandler(DispatcherTimer_Tick);
+			dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
 		}
 
 		private void DispatcherTimer_Tick(object sender, EventArgs e)
 		{
-			this.timerTimespan += TimeSpan.FromSeconds(1);
-			this.label_Timer.Content = this.timerTimespan.ToString("hh\\:mm\\:ss");
+			timerTimespan += TimeSpan.FromSeconds(1);
+			label_Timer.Content = timerTimespan.ToString("hh\\:mm\\:ss");
 		}
 
 		private void OnSudokuSolved(object sender, EventArgs e)
 		{
-			this.dispatcherTimer.Stop();
-			this.textBlock_Message.Foreground = Brushes.Green; // 게임 완료시 메세지 색깔
-			this.textBlock_Message.Text = string.Format(PlayerSolvedSudokuMessage, this.timerTimespan.TotalSeconds);
+			dispatcherTimer.Stop();
+			textBlock_Message.Foreground = Brushes.Green; // 게임 완료시 메세지 색깔
+			textBlock_Message.Text = string.Format(PlayerSolvedSudokuMessage, timerTimespan.TotalSeconds);
 		}
 
-		private void IsUnvalidCellValueAdded(object sender, EventArgs e)
+		private void OnUnvalidCellValueAdded(object sender, EventArgs e)
 		{
-			this.textBlock_Message.Foreground = Brushes.Red; // 오류시 셀의 테두리 색깔
-			this.textBlock_Message.Text = UnvalidSudokuCellAddedMessage;
+			textBlock_Message.Foreground = Brushes.Red; // 오류시 셀의 테두리 색깔
+			textBlock_Message.Text = UnvalidSudokuCellAddedMessage;
 
-			this.Button_Undo.IsEnabled = false;
-			this.Button_Redo.IsEnabled = false;
-			this.Button_Hint.IsEnabled = false;
-			this.Button_Solve.IsEnabled = false;
+			Button_Undo.IsEnabled = false;
+			Button_Redo.IsEnabled = false;
+			Button_Hint.IsEnabled = false;
+			Button_Solve.IsEnabled = false;
 		}
 
-		private void IsUnvalidCellValueRemoved(object sender, EventArgs e)
+		private void OnUnvalidCellValueRemoved(object sender, EventArgs e)
 		{
-			this.textBlock_Message.Foreground = Brushes.Black; // 기본 테두리 색깔
-			this.textBlock_Message.Text = "";
+			textBlock_Message.Foreground = Brushes.Black; // 기본 테두리 색깔
+			textBlock_Message.Text = "";
 
-			this.Button_Undo.IsEnabled = true;
-			this.Button_Redo.IsEnabled = true;
-			this.Button_Hint.IsEnabled = true;
-			this.Button_Solve.IsEnabled = true;
+			Button_Undo.IsEnabled = true;
+			Button_Redo.IsEnabled = true;
+			Button_Hint.IsEnabled = true;
+			Button_Solve.IsEnabled = true;
 		}
 
 		private void UpdateProgressBar()
 		{
-			this.ProgressBar_SudokuStatus.Value = this.SudokuGrid.GetProgress();
+			ProgressBar_SudokuStatus.Value = SudokuGrid.GetProgress();
 		}
 
 		private void ClearMessage()
 		{
-			this.textBlock_Message.Text = "";
+			textBlock_Message.Text = "";
 		}
 
 		private void ShowUnsolvableSudokuMessage()
 		{
-			this.textBlock_Message.Foreground = Brushes.Red; // 오류시 메세지 색깔
-			this.textBlock_Message.Text = UnsolvableSudokuMessage;
+			textBlock_Message.Foreground = Brushes.Red; // 오류시 메세지 색깔
+			textBlock_Message.Text = UnsolvableSudokuMessage;
 		}
 
 		private void RestartTimer()
 		{
-			this.timerTimespan = new TimeSpan();
-			this.dispatcherTimer.Start();
-			this.label_Timer.Content = this.timerTimespan.ToString("hh\\:mm\\:ss");
+			timerTimespan = new TimeSpan();
+			dispatcherTimer.Start();
+			label_Timer.Content = timerTimespan.ToString("hh\\:mm\\:ss");
 		}
-		/////////////////////////////////// UI 핸들링 ///////////////////////////////////
-	}
+        #endregion
+    }
 }

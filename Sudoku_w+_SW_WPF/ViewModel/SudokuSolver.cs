@@ -8,7 +8,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 	/// </summary>
 	public class SudokuSolver : ISudokuSolver
 	{
-		private const string InvalidSudokuBoardMessage = "SudokuBoard must be a 9x9 jagged byte array!";
+		private const string InvalidSudokuBoardMessage = "스도쿠 보드는 반드시 9*9 가변 배열이여야 합니다!";
 
 		/// <summary>
 		/// 새로운 셀이 스도쿠 기본 규칙을 따르는지, 유효한지를 검사합니다.
@@ -120,8 +120,8 @@ namespace Cozyplanes.SudokuApp.ViewModel
 
 				if (!isCellValueValid) // 셀이 기본 규칙을 따르고 있지 않다면
 				{
-					// 다음 값으로
-					continue;
+                    // 다음 값으로
+                    continue;
 				}
 
 				// 값 저장
@@ -137,7 +137,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 				sudokuBoard[row][column] = 0;
 			}
 
-			// 다음 줄에 알고리즘이 왔다면 답안은 없음, false 반환
+			// 다음 행에 알고리즘이 왔다면 답안은 없음, false 반환
 			return false;
 		}
 	}

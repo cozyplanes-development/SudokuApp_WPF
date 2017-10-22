@@ -44,10 +44,10 @@
         <Button x:Name="Button_Undo" Content="{StaticResource UndoImage}" HorizontalAlignment="Left" Margin="484,10,0,0" VerticalAlignment="Top" Width="35" Height="35" Click="Button_Undo_Click"/>
         <Button x:Name="Button_Redo" Content="{StaticResource RedoImage}" HorizontalAlignment="Left" Margin="531,10,0,0" VerticalAlignment="Top" Width="35" Height="35" Click="Button_Redo_Click"/>
         <Button x:Name="Button_Restart" Content="{StaticResource RestartImage}" HorizontalAlignment="Left" Margin="575,10,0,0" VerticalAlignment="Top" Width="35" Height="35" Click="Button_Restart_Click"/>
-        <Button x:Name="Button_Hint" Content="Hint?" HorizontalAlignment="Left" Margin="484,60,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_Hint_Click"/>
-        <Button x:Name="Button_Solve" Content="Solve" HorizontalAlignment="Left" Margin="484,115,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_Solve_Click"/>
-        <Button x:Name="Button_Quit" Content="Quit" HorizontalAlignment="Left" Margin="484,421,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_Quit_Click"/>
-        <Button x:Name="Button_GenerateNew" Content="Generate New" HorizontalAlignment="Left" Margin="484,366,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_GenerateNew_Click"/>
+        <Button x:Name="Button_Hint" Content="힌트" HorizontalAlignment="Left" Margin="484,60,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_Hint_Click"/>
+        <Button x:Name="Button_Solve" Content="해결" HorizontalAlignment="Left" Margin="484,115,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_Solve_Click"/>
+        <Button x:Name="Button_Quit" Content="끝내기" HorizontalAlignment="Left" Margin="484,421,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_Quit_Click"/>
+        <Button x:Name="Button_GenerateNew" Content="게임 생성" HorizontalAlignment="Left" Margin="484,366,0,0" VerticalAlignment="Top" Width="126" Height="40" FontSize="18" Click="Button_GenerateNew_Click"/>
         
         <!-- 난이도를 선택할 수 있는 콤보 박스, Enums 에서 Value 바인딩-->
         <ComboBox x:Name="ComboBox_SudokuDifficulty" 
