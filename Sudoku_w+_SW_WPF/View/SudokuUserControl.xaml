@@ -19,7 +19,7 @@
           HorizontalContentAlignment="Center"
           VerticalContentAlignment="Center"
           CanUserAddRows="False"
-	      BeginningEdit="DataGridSudoku_BeginningEdit"
+	  BeginningEdit="DataGridSudoku_BeginningEdit"
           CellEditEnding="DataGridSudoku_CellEditEnding">	
             <DataGrid.Columns>
                 <!-- 세로줄-->
