@@ -34,7 +34,7 @@ namespace Cozyplanes.SudokuApp
         {
             if (sudokuGenerator == null || sudokuSolver == null)
             {
-                throw new ArgumentNullException("SudokuGenerator and/or sudokuSolver is null!");
+                throw new ArgumentNullException("SudokuGenerator 과/또는 sudokuSolver 가 null 입니다!");
             }
 
             this.sudokuGenerator = sudokuGenerator;
