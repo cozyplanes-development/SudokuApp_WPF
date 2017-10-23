@@ -3,24 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Cozyplanes.SudokuApp"
+             xmlns:hack="clr-namespace:Cozyplanes.SudokuApp"
              mc:Ignorable="d" 
              d:DesignHeight="455" d:DesignWidth="463">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" 
-          Height="452" 
-          Width="455"
-          Name="DataGridSudoku" 
-          VerticalAlignment="Top"
-          HorizontalAlignment="Left"
-          HeadersVisibility="None"
-          RowHeight="50"
-          ColumnWidth="*"
-          HorizontalContentAlignment="Center"
-          VerticalContentAlignment="Center"
-          CanUserAddRows="False"
-	      BeginningEdit="DataGridSudoku_BeginningEdit"
-          CellEditEnding="DataGridSudoku_CellEditEnding">	
+        <DataGrid 
+            AutoGenerateColumns="False" 
+            Height="452" 
+            Width="455"
+            Name="DataGridSudoku" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            HeadersVisibility="None"
+            RowHeight="50"
+            ColumnWidth="*"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            CanUserAddRows="False"
+            PreparingCellForEdit="DataGridSudoku_OnPreparingCellForEdit"
+	        BeginningEdit="DataGridSudoku_BeginningEdit"
+            CellEditEnding="DataGridSudoku_CellEditEnding">
+            <!--hack:DataGridRollbackOnUnfocusedBehaviour.DataGridRollbackOnUnfocused="True">-->
             <DataGrid.Columns>
                 <!-- 세로줄-->
                 <DataGridTextColumn Visibility="Visible" Binding="{Binding Path=Cell1.Value, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnExceptions=False, NotifyOnTargetUpdated=True}" />

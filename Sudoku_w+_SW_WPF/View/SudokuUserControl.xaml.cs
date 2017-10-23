@@ -11,6 +11,7 @@ using Cozyplanes.SudokuApp.Model.Enums;
 using Cozyplanes.SudokuApp.Model;
 using Cozyplanes.SudokuApp.Model.PlayerActions;
 using Cozyplanes.SudokuApp.ViewModel;
+using System.Windows.Input;
 
 namespace Cozyplanes.SudokuApp
 {
@@ -356,20 +357,35 @@ namespace Cozyplanes.SudokuApp
             DataGridSudoku.ItemsSource = currentSudokuGrid;
         }
 
+        //private void DataGridSudoku_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (DataGridSudoku.SelectedIndex == 1)
+        //    {
+        //        DataGridSudoku.CancelEdit(DataGridEditingUnit.Row);
+        //    }
+        //}
+        //void DataGridSudoku_Unloaded(object sender, RoutedEventArgs e)
+        //{
+        //    var grid = (DataGrid)sender;
+        //    grid.CommitEdit(DataGridEditingUnit.Row, true);
+        //}
         private void RefreshSudokuGridItems()
         {
-            try
-            {
+            //try
+            //{
                 DataGridSudoku.Items.Refresh();
-                DataGridSudoku.Items.Refresh(); // Exception
-            }
-            catch (InvalidOperationException)
-            {
+                //DataGridSudoku.Items.Refresh(); // Exception
+            //}
+            //catch (InvalidOperationException)
+            //{
+                //DataGridSudoku.Items.Refresh();
                 //  스도쿠 DataGrid가 유효하지 않거나
                 // 값을 새로고침할때 스도쿠 보드 (Grid)에 다른 조작이 있을 때
                 // 어플리케이션이 중지되는 것을 막기 위한 대응책입니다.
-            }
+            //}
 		}
+
+        
 
         private SudokuRow[] SolveSudoku(SudokuRow[] sudokuGrid)
         {
@@ -383,6 +399,24 @@ namespace Cozyplanes.SudokuApp
             else
             {
                 return null;
+            }
+        }
+
+        void DataGridSudoku_OnPreparingCellForEdit(object sender, DataGridPreparingCellForEditEventArgs e)
+        {
+            if (e.EditingElement is TextBox textBox)
+            {
+                textBox.PreviewTextInput -= HandlePreviewTextInput;
+                textBox.PreviewTextInput += HandlePreviewTextInput;
+            }
+        }
+
+        void HandlePreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!int.TryParse(e.Text, out var numericValue)
+                || numericValue < 0 || numericValue > 9)
+            {
+                e.Handled = true;
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,7 +11,7 @@ using Cozyplanes.SudokuApp.Model.Enums;
 
 namespace Cozyplanes.SudokuApp
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
 	{
         private const string InvalidOperationMessage = "Error : Internal\n재시작 해주세요.";
         private const string UnsolvableSudokuMessage = "현재 상태의 스도쿠는 해결할 수 없습니다! 재시작하거나 몇몇 셀을 지워보세요.";
@@ -105,7 +107,7 @@ namespace Cozyplanes.SudokuApp
 
 		private void Button_Undo_Click(object sender, RoutedEventArgs e)
 		{
-			if (SudokuGrid.UndoPlayerAction())
+			if (this.SudokuGrid.UndoPlayerAction())
 			{
 				UpdateProgressBar();
 				ClearMessage();
@@ -137,7 +139,7 @@ namespace Cozyplanes.SudokuApp
 		}
 
 		private void ComboBox_SudokuDifficulty_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
+        { 
 			SudokuGrid.GenerateAndPopulateSudoku();
 
 			RestartTimer();
