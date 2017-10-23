@@ -413,8 +413,7 @@ namespace Cozyplanes.SudokuApp
 
         void HandlePreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!int.TryParse(e.Text, out var numericValue)
-                || numericValue < 0 || numericValue > 9)
+            if (!int.TryParse(e.Text, out var numericValue) || numericValue < 0 && numericValue > 9)
             {
                 e.Handled = true;
             }

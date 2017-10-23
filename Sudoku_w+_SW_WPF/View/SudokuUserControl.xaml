@@ -43,6 +43,7 @@
             
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
+                    <!-- Forget about the colors here, i messed up-->
                     <Setter Property="Background" Value="PeachPuff" /> <!-- 배경색-->
                     <Setter Property="Foreground" Value="Black" />
                     <Setter Property="FontSize" Value="24" />
