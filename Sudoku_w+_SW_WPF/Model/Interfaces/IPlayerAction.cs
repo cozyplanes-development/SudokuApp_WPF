@@ -8,7 +8,7 @@ namespace Cozyplanes.SudokuApp.Model.Interfaces
 	public interface IPlayerAction
     {
         /// <summary>
-		/// 플레이어 액션의 종류
+		/// 플레이어 액션의 종류 
         /// </summary>
         PlayerActionType PlayerActionType { get; }
     }

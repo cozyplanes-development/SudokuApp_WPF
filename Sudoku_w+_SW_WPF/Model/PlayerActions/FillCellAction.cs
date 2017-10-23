@@ -35,7 +35,7 @@ namespace Cozyplanes.SudokuApp.Model.PlayerActions
             {
                 if (value < 0 || 8 < value)
                 {
-                    throw new ArgumentOutOfRangeException("PlayerDecision row must be between 0 and 8!");
+                    throw new ArgumentOutOfRangeException("PlayerDecision 행은 반드시 0과 8 사이 이여야 합니다!");
                 }
 
                 this.row = value;
@@ -53,7 +53,7 @@ namespace Cozyplanes.SudokuApp.Model.PlayerActions
             {
                 if (value < 0 || 8 < value)
                 {
-                    throw new ArgumentOutOfRangeException("PlayerDecision column must be between 0 and 8!");
+                    throw new ArgumentOutOfRangeException("PlayerDecision 열은 반드시 0과 8 사이 이여야 합니다!");
                 }
 
                 this.column = value;
@@ -71,7 +71,7 @@ namespace Cozyplanes.SudokuApp.Model.PlayerActions
             {
                 if (value < 1 || 9 < value)
                 {
-                    throw new ArgumentOutOfRangeException("PlayerDecision value must be between 1 and 9!");
+                    throw new ArgumentOutOfRangeException("PlayerDecision 값은 반드시 1과 9 사이 이여야 합니다!");
                 }
 
                 this.value = value;

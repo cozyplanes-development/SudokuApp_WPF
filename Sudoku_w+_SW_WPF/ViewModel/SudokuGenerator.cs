@@ -20,7 +20,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 		{
 			if (sudokuSolver == null || sudokuTransformer == null)
 			{
-				throw new ArgumentNullException("SudokuSolver or sudokuTransformer is null!");
+				throw new ArgumentNullException("SudokuSolver 이나/또는 sudokuTransformer 가 null 입니다!");
 			}
 
 			this.sudokuSolver = sudokuSolver;

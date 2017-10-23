@@ -11,3 +11,4 @@
 		public HintAction(byte row, byte column, byte value) : base(row, column, value) { }
 	}
 }
+ 

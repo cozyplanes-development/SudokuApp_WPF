@@ -27,7 +27,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
 
 			if ((row < 0 || row > 8) || (column < 0 || column > 8))
 			{
-				throw new IndexOutOfRangeException("Row and column values must be between 0 and 8!");
+				throw new IndexOutOfRangeException("행과 열의 값은 반드시 0부터 8사이 이여야 합니다!");
 			}
 
 			for (int i = 0; i < 9; i++)

@@ -6,7 +6,7 @@
     public enum SudokuBoardTransformationType
     {
         HorizontalIn9x3Group,            // 9*3 의 가로 그룹
-        HorizontalAroundFourthRowGroup,  // 4번째 (가로) 행 주변 그룹
+        HorizontalAroundFourthRowGroup,  // 4번째 (가로) 행 주변 그룹 
         VerticalIn3x9Group,              // 3*9 의 세로 그룹
 		VerticalAroundFourthColumnGroup, // 4번째 (세로) 열 주변 그룹
 		AroundMainDiagonalGroup,         // 주 대각선 주변 그룹

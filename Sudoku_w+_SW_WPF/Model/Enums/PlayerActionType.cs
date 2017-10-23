@@ -6,7 +6,7 @@
     public enum PlayerActionType
     {
         FillCell,
-        Restart,
+        Restart,  
         Solve
     }
 }

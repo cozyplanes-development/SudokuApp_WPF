@@ -35,7 +35,7 @@ namespace Cozyplanes.SudokuApp.Model
 			{
 				if (value != null && (value < 1 || 9 < value))
 				{
-					throw new ArgumentOutOfRangeException("SudokuCell value must be between 1 and 9.");
+					throw new ArgumentOutOfRangeException("SudokuCell 값은 반드시 1과 9 사이 이여야 합니다!");
 				}
 
 				this.value = value;

@@ -56,7 +56,7 @@
                             <Setter Property="Background" Value="SandyBrown"/>
                         </Trigger>
                     </Style.Triggers>
-                </Style>
+                </Style> 
             </DataGrid.CellStyle>
         </DataGrid>
     </Grid>

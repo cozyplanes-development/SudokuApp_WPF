@@ -11,7 +11,7 @@
 		/// <param name="sudokuBoard">9x9 가변 배열</param>
 		/// <param name="row">새로운 셀의 행</param>
 		/// <param name="column">새로운 셀의 열</param>
-		/// <param name="value">새로운 셀의 값</param>
+		/// <param name="value">새로운 셀의 값</param> 
 		/// <returns>새로운 셀이 유효한지를 반환합니다.</returns>
 		bool IsNewCellValid(byte[][] sudokuBoard, byte row, byte column, byte value);
 

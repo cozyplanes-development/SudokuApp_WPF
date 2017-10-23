@@ -9,10 +9,11 @@ namespace Cozyplanes.SudokuApp.ViewModel
 	/// </summary>
 	public class SudokuTransformer : ISudokuTransformer
 	{
-		// 빈칸의 개수를 여기서 수정할 수 있습니다
-		// 다음 수는 보편적인 스도쿠의 난이도에서 빈칸의 평균 값입니다. 
-		// 따라서 알고리즘과 전혀 관계가 없음을 알립니다.
-		private const int CellsToEraseOnEasyDifficulty       = 30; // Easy
+        // 빈칸의 개수를 여기서 수정할 수 있습니다
+        // 다음 수는 보편적인 스도쿠의 난이도에서 빈칸의 평균 값입니다. 
+        // 따라서 알고리즘과 전혀 관계가 없음을 알립니다.
+        private const int CellsToEraseOnDemo                 = 10; // Demo
+        private const int CellsToEraseOnEasyDifficulty       = 30; // Easy
 		private const int CellsToEraseOnMediumDifficulty     = 40; // Medium
 		private const int CellsToEraseOnHardDifficulty       = 45; // Hard
 		private const int CellsToEraseOnImpossibleDifficulty = 55; // Expert
@@ -40,8 +41,12 @@ namespace Cozyplanes.SudokuApp.ViewModel
 			// 지울 셀의 개수를 0으로 초기화
 			int cellsToErase = 0;
 
-			// 지울 셀의 개수를 난이도에 따라 지정
-			if (sudokuDifficulty == SudokuDifficultyType.Easy)
+            // 지울 셀의 개수를 난이도에 따라 지정
+            if (sudokuDifficulty == SudokuDifficultyType.데모)
+            {
+                cellsToErase = CellsToEraseOnDemo;
+            }
+            if (sudokuDifficulty == SudokuDifficultyType.Easy)
 			{
 				cellsToErase = CellsToEraseOnEasyDifficulty;
 			}
@@ -63,7 +68,7 @@ namespace Cozyplanes.SudokuApp.ViewModel
             }
 			else
 			{
-				cellsToErase = 10; // Demo 선택시 지정된 constant 가 없으므로 빈칸 10개 지정 / 오류 발생시에도 빈칸 10개
+				cellsToErase = 20; // 오류 발생시 빈칸 20개 뚫기 (Demo 와 Easy 사이 난이도)
 			}
 
 			// 셀 지우는 방법:
@@ -231,10 +236,10 @@ namespace Cozyplanes.SudokuApp.ViewModel
 					break;
 
 				case SudokuBoardTransformationType.Horizontal9x3Group: // 9*3 가로 그룹
-					break;
+					break; // 건너뛰기
 
 				case SudokuBoardTransformationType.Vertical9x3Group: // 9*3 세로 그룹
-					break;
+					break; // 건너뛰기
 
 				default: // 기본값
 					break;

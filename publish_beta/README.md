@@ -65,6 +65,7 @@
   - `Array` = 배열                
   - `Byte` = 바이트            
   - `Value` = 값                 
+  - `Elements` = 요소
 <br/>
 
 - 프로젝트 고유 용어 번역                

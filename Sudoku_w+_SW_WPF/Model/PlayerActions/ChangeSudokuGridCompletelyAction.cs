@@ -25,7 +25,7 @@ namespace Cozyplanes.SudokuApp.Model.PlayerActions
         {
             if (value == null || value.Length != 9)
             {
-                throw new ArgumentException("SudokuGrid must have nine elements!");
+                throw new ArgumentException("스도쿠 보드 (Grid)는 반드시 9개의 요소가 필요합니다!");
             }
 
             sudokuGridBeforeAction = value;

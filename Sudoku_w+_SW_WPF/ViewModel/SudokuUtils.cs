@@ -150,5 +150,5 @@ namespace Cozyplanes.SudokuApp.ViewModel
 			}
 			return sudokuGrid;
 		}
-	}
+	} 
 }

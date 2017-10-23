@@ -1,6 +1,4 @@
-﻿using MahApps.Metro.Controls;
-
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,9 +9,9 @@ using Cozyplanes.SudokuApp.Model.Enums;
 
 namespace Cozyplanes.SudokuApp
 {
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow : Window
 	{
-        private const string InvalidOperationMessage = "Error : Internal\n재시작 해주세요.";
+        private const string InvalidOperationMessage = "Error : Internal\n재시작 해주세요."; // temporary
         private const string UnsolvableSudokuMessage = "현재 상태의 스도쿠는 해결할 수 없습니다! 재시작하거나 몇몇 셀을 지워보세요.";
 		private const string PlayerSolvedSudokuMessage = "축하드립니다! {0} 초 만에 해결하셨군요! 또다른 게임을 플레이해 보거나 더 어려운 난이도를 플레이 해 보세요! : )";
 		private const string UnvalidSudokuCellAddedMessage = "스도쿠는 유효한 상태 (답안이 있는 상태) 이어야만 진행하실 수 있습니다. 재시작하거나 몇몇 셀을 지워보세요.";

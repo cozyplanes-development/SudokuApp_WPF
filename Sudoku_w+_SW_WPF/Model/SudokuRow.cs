@@ -4,7 +4,7 @@ namespace Cozyplanes.SudokuApp.Model
 {
 	public class SudokuRow
 	{
-		private const string SudokuRowIndexOutOfRangeMessage = "The sudoku row has only nine elements indexed from zero.";
+		private const string SudokuRowIndexOutOfRangeMessage = "이 스도쿠 행은 0부터 인덱스된 9개의 요소만 있습니다.";
 
 		public SudokuRow() { }
 
