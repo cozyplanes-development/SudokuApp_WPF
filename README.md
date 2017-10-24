@@ -2,7 +2,7 @@
 
 **MAKE NEW PROJECT + DELETE UNNECESSARY REFS**      - Finished
 
-**INVESTIGATE INNO SETUP INSTALLER**       - Investigate
+**INVESTIGATE INNO SETUP INSTALLER**       - **will not implement**
 
 
 ## SudokuApp_WPF_cozyplanes
@@ -13,8 +13,8 @@ See README.md in publish_beta for installing and checking options.
 **`$ sudo { ku }`**    - in review
 
 ### ISSUES
-- (Bug) Only need to take input of 1-9, but excepting all numbers **IN REVIEW**
-- (Bug) Exception in `View/SudokuUserControl.xaml.cs` - `RefreshSudokuItems()` (AP003) **IN REVIEW**
+- (Bug) Only need to take input of 1-9, but excepting all numbers **fixed**
+- (Bug) Exception in `View/SudokuUserControl.xaml.cs` - `RefreshSudokuItems()` (AP003) **INVESTIGATE**
 
 - (Bug) Level sometimes repeats (AP001) **FIXED**
 - (Bug) Not displaying `PlayerSolvedSudokuMessage` when redone after undone in finish. (before pressing the final enter) (AP004) **FIXED**
